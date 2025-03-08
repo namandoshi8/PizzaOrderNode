@@ -27,13 +27,21 @@
       <div>
         <ul class="flex items-center">
           <li class="ml-6"><a href="/">Menu</a></li>
-          <% if(user) { %>
-
-          <!-- <li class="ml-6">
+          <% if(user) { %> <% console.log(user) %> <% if(user.role ===
+          'customer') { %>
+          <li class="ml-6">
             <form id="orders" action="/customer/orders" method="POST">
               <a href="/customer/orders">Orders</a>
             </form>
-          </li> -->
+          </li>
+          <% } else if(user.role === 'admin') { %>
+          <li class="ml-6">
+            <form id="adminOrders" action="/admin/orders" method="POST">
+              <a href="/admin/orders">Orders</a>
+            </form>
+          </li>
+          <% } %>
+
           <li class="ml-6">
             <form id="logout" action="/logout" method="POST">
               <a onclick="document.getElementById('logout').submit()" href="#"
